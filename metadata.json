@@ -1,0 +1,7 @@
+{
+  "name": "Advance Computer Institute - Management & Verification System",
+  "description": "Comprehensive Institute Management System for Advance Computer Institute, Ayodhya. Features multi-role Admin, Franchise, and Student portals, verified certificate & marksheet generation, QR verification, and template customization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

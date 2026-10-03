@@ -1,0 +1,1006 @@
+{
+  "settings": {
+    "instituteName": "ADVANCE INSTITUTE OF DIGITAL TECHNOLOGY",
+    "tagline": "Center for Excellence in Information Technology & Professional Computing",
+    "directorName": "Mr. Amar Soni",
+    "directorQualification": "MCA, Data Science",
+    "email": "advancecomputerinstitute2026@gmail.com",
+    "mobile": "6306242129, 8382819908",
+    "address": "Near Grammar Academy Chauraha, Kaushalpuri Phase 1, Ayodhya Cantt, Ayodhya – 224001, Uttar Pradesh, India",
+    "website": "advancecomputerinstitute.com",
+    "logoUrl": "/aidt-logo.svg",
+    "directorSignatureUrl": "data:image/png;base64,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",
+    "controllerSignatureUrl": "/signature-controller.svg",
+    "directorPhotoUrl": "/director-amar-soni.svg",
+    "instituteStampUrl": "/stamp-official.svg",
+    "watermarkText": "ADVANCE INSTITUTE OF DIGITAL TECHNOLOGY AYODHYA CANTT",
+    "accreditationText": "ISO 9001:2015 Certified Educational Institute & Registered Skill Training Entity",
+    "offerTickerEnabled": true,
+    "offerTickerText": "⚡ SPECIAL ADMISSION OFFER: Flat 20% EXTRA on Every Course This Week! Limited seats in Ayodhya Cantt batch.",
+    "offerDurationHours": 14,
+    "gradingRules": [
+      {
+        "minPercent": 85,
+        "grade": "A+",
+        "remark": "Excellent / Distinction"
+      },
+      {
+        "minPercent": 75,
+        "grade": "A",
+        "remark": "Very Good"
+      },
+      {
+        "minPercent": 65,
+        "grade": "B+",
+        "remark": "Good"
+      },
+      {
+        "minPercent": 55,
+        "grade": "B",
+        "remark": "Satisfactory"
+      },
+      {
+        "minPercent": 40,
+        "grade": "C",
+        "remark": "Pass"
+      },
+      {
+        "minPercent": 0,
+        "grade": "F",
+        "remark": "Failed"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "user-admin",
+      "email": "admin@advancecomputerinstitute.com",
+      "password": "admin",
+      "role": "admin",
+      "name": "Amar Soni (Director)",
+      "mobile": "6306242129"
+    },
+    {
+      "id": "user-franchise",
+      "email": "franchise@advancecomputerinstitute.com",
+      "password": "admin",
+      "role": "franchise",
+      "name": "ACI Faizabad City Tech Center",
+      "mobile": "8382819908",
+      "referenceId": "fran-02",
+      "franchiseCode": "ACI-AYD-02"
+    },
+    {
+      "id": "user-student",
+      "email": "student@advancecomputerinstitute.com",
+      "password": "admin",
+      "role": "student",
+      "name": "Amit Kumar Verma",
+      "mobile": "9876543210",
+      "referenceId": "stu-01"
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-adca",
+      "code": "ADCA",
+      "name": "Advanced Diploma in Computer Applications",
+      "duration": "12 Months",
+      "session": "2025-2026",
+      "eligibility": "10+2 / Intermediate in any stream",
+      "originalFee": 12000,
+      "fee": 6500,
+      "discountPercent": 46,
+      "badgeText": "46% OFF",
+      "description": "Comprehensive 1-year master program covering Computer Fundamentals, MS Office, DTP (Photoshop), Financial Accounting (Tally Prime + GST), Web Designing, and Software Applications.",
+      "subjects": [
+        {
+          "code": "ADCA-101",
+          "name": "Computer Fundamentals & OS",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 70,
+          "practicalMax": 20,
+          "internalMax": 10
+        },
+        {
+          "code": "ADCA-102",
+          "name": "Office Automation (Word, Excel, PPT)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "ADCA-103",
+          "name": "Financial Accounting with Tally Prime",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "ADCA-104",
+          "name": "Desktop Publishing (Photoshop, CorelDraw)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "ADCA-105",
+          "name": "Web Designing (HTML, CSS, JS)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "ADCA-106",
+          "name": "Project & Viva-Voce",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 30,
+          "practicalMax": 50,
+          "internalMax": 20
+        }
+      ]
+    },
+    {
+      "id": "course-dca",
+      "code": "DCA",
+      "name": "Diploma in Computer Applications",
+      "duration": "6 Months",
+      "session": "2025-2026",
+      "eligibility": "10th / High School or equivalent",
+      "originalFee": 8000,
+      "fee": 4500,
+      "discountPercent": 44,
+      "badgeText": "44% OFF",
+      "description": "Essential computer literacy, Microsoft Office productivity suite, basic database operations, internet security utilities, and bilingual typing skills.",
+      "subjects": [
+        {
+          "code": "DCA-101",
+          "name": "Computer Fundamentals & Windows",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 70,
+          "practicalMax": 20,
+          "internalMax": 10
+        },
+        {
+          "code": "DCA-102",
+          "name": "MS Office & Internet Applications",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "DCA-103",
+          "name": "Database Management Systems",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "DCA-104",
+          "name": "Practical Lab & Viva",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 30,
+          "practicalMax": 50,
+          "internalMax": 20
+        }
+      ]
+    },
+    {
+      "id": "course-ccc",
+      "code": "CCC",
+      "name": "Course on Computer Concepts",
+      "duration": "3 Months",
+      "session": "2025-2026",
+      "eligibility": "Open to all students and competitive exam aspirants",
+      "originalFee": 4500,
+      "fee": 3000,
+      "discountPercent": 33,
+      "badgeText": "33% OFF",
+      "description": "Government certified standard syllabus covering Digital Financial Services, Cyber Security, LibreOffice Suite, GUI OS, and Digital Citizen literacy.",
+      "subjects": [
+        {
+          "code": "CCC-101",
+          "name": "Introduction to Computer & GUI Based OS",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 80,
+          "practicalMax": 20,
+          "internalMax": 0
+        },
+        {
+          "code": "CCC-102",
+          "name": "Elements of Word Processing & Spreadsheets",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 70,
+          "practicalMax": 30,
+          "internalMax": 0
+        },
+        {
+          "code": "CCC-103",
+          "name": "Digital Financial Services & Cyber Ethics",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 80,
+          "practicalMax": 20,
+          "internalMax": 0
+        }
+      ]
+    },
+    {
+      "id": "course-python-ds",
+      "code": "PYDS",
+      "name": "Python & Data Science Specialist",
+      "duration": "6 Months",
+      "session": "2025-2026",
+      "eligibility": "Graduate / Intermediate / Engineering / BCA in any stream",
+      "originalFee": 20000,
+      "fee": 12000,
+      "discountPercent": 40,
+      "badgeText": "40% OFF",
+      "description": "Designed under personal guidance of Director Mr. Amar Soni (MCA, Data Science). Covers Python programming, NumPy, Pandas, Matplotlib, SQL data analytics, and Machine Learning project.",
+      "subjects": [
+        {
+          "code": "PY-101",
+          "name": "Core & Advanced Python Programming",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "PY-102",
+          "name": "Data Analysis with NumPy & Pandas",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "PY-103",
+          "name": "Data Visualization & SQL for Analytics",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "PY-104",
+          "name": "Capstone Data Science Project",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 20,
+          "practicalMax": 60,
+          "internalMax": 20
+        }
+      ]
+    },
+    {
+      "id": "course-tally-gst",
+      "code": "TALLY-GST",
+      "name": "Tally Prime + GST Professional",
+      "duration": "3 Months",
+      "session": "2025-2026",
+      "eligibility": "10th / 12th / Commerce / Arts or any aspirant",
+      "originalFee": 6000,
+      "fee": 3000,
+      "discountPercent": 50,
+      "badgeText": "50% OFF",
+      "description": "Practical computerized accounting course covering Tally Prime, Voucher Entry, Inventory, GST Billing, E-Way Bill, TDS/TCS, Banking reconciliation, and Balance Sheet finalization.",
+      "subjects": [
+        {
+          "code": "TALLY-101",
+          "name": "Accounting Fundamentals & Principles",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "TALLY-102",
+          "name": "Tally Prime Operations & Inventory Control",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "TALLY-103",
+          "name": "GST Invoicing, E-Way Bill & Return Filing",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "TALLY-104",
+          "name": "Live Business Accounting Practical Project",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 20,
+          "practicalMax": 60,
+          "internalMax": 20
+        }
+      ]
+    },
+    {
+      "id": "course-web-dev",
+      "code": "WEB-DEV",
+      "name": "Web Designing & Frontend Development",
+      "duration": "4 Months",
+      "session": "2025-2026",
+      "eligibility": "10th / 12th / Diploma or any student",
+      "originalFee": 15000,
+      "fee": 8000,
+      "discountPercent": 47,
+      "badgeText": "47% OFF",
+      "description": "Modern, high-demand web designing curriculum: HTML5 semantic structure, modern responsive CSS3/Flexbox/Grid, Tailwind CSS, JavaScript interactivity, Bootstrap 5, and live website hosting.",
+      "subjects": [
+        {
+          "code": "WEB-101",
+          "name": "HTML5 & Modern Semantic Web Architecture",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 60,
+          "practicalMax": 30,
+          "internalMax": 10
+        },
+        {
+          "code": "WEB-102",
+          "name": "Responsive Styling (CSS3, Tailwind, Flexbox)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "WEB-103",
+          "name": "JavaScript Programming & Interactive DOM",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 50,
+          "practicalMax": 40,
+          "internalMax": 10
+        },
+        {
+          "code": "WEB-104",
+          "name": "Live Website Hosting & Portfolio Project",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMax": 20,
+          "practicalMax": 60,
+          "internalMax": 20
+        }
+      ]
+    }
+  ],
+  "franchises": [
+    {
+      "id": "fran-01",
+      "centerCode": "ACI-AYD-01",
+      "centerName": "Advance Institute of Digital Technology (Main Campus)",
+      "ownerName": "Mr. Amar Soni",
+      "mobile": "6306242129",
+      "email": "advancecomputerinstitute2026@gmail.com",
+      "address": "Near Grammar Academy Chauraha, Kaushalpuri Phase 1, Ayodhya Cantt",
+      "district": "Ayodhya",
+      "state": "Uttar Pradesh",
+      "status": "approved",
+      "approvedDate": "2024-01-15",
+      "createdAt": "2024-01-01"
+    },
+    {
+      "id": "fran-02",
+      "centerCode": "ACI-AYD-02",
+      "centerName": "ACI Faizabad City Tech Center",
+      "ownerName": "Ramesh Chandra Srivastava",
+      "mobile": "8382819908",
+      "email": "franchise@advancecomputerinstitute.com",
+      "address": "Civil Lines, Near Bus Station, Ayodhya",
+      "district": "Ayodhya",
+      "state": "Uttar Pradesh",
+      "status": "approved",
+      "approvedDate": "2024-03-20",
+      "createdAt": "2024-03-10"
+    }
+  ],
+  "students": [
+    {
+      "id": "stu-01",
+      "registrationNumber": "ACI/REG/2026/000001",
+      "enrollmentNumber": "ACI/ENR/2026/000001",
+      "fullName": "Amit Kumar Verma",
+      "fatherName": "Ram Shanker Verma",
+      "motherName": "Sunita Devi",
+      "dob": "2002-05-14",
+      "gender": "Male",
+      "mobile": "9876543210",
+      "email": "amit.verma@example.com",
+      "address": "Village Devkali, Ayodhya, UP",
+      "courseId": "course-adca",
+      "courseName": "Advanced Diploma in Computer Applications",
+      "duration": "12 Months",
+      "session": "2025-2026",
+      "admissionDate": "2025-01-10",
+      "photoUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=face",
+      "franchiseId": "fran-02",
+      "franchiseName": "ACI Faizabad City Tech Center",
+      "franchiseCode": "ACI-AYD-02",
+      "admissionStatus": "Approved",
+      "academicStatus": "Completed",
+      "createdAt": "2025-01-10T10:00:00.000Z"
+    },
+    {
+      "id": "stu-02",
+      "registrationNumber": "ACI/REG/2026/000002",
+      "enrollmentNumber": "ACI/ENR/2026/000002",
+      "fullName": "Priya Sharma",
+      "fatherName": "Dinesh Sharma",
+      "motherName": "Reeta Sharma",
+      "dob": "2003-08-22",
+      "gender": "Female",
+      "mobile": "9876543211",
+      "email": "priya.sharma@example.com",
+      "address": "Kaushalpuri Phase 1, Ayodhya Cantt, UP",
+      "courseId": "course-dca",
+      "courseName": "Diploma in Computer Applications",
+      "duration": "6 Months",
+      "session": "2025-2026",
+      "admissionDate": "2025-04-05",
+      "photoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face",
+      "franchiseId": "fran-02",
+      "franchiseName": "ACI Faizabad City Tech Center",
+      "franchiseCode": "ACI-AYD-02",
+      "admissionStatus": "Approved",
+      "academicStatus": "Completed",
+      "createdAt": "2025-04-05T11:00:00.000Z"
+    },
+    {
+      "id": "stu-03",
+      "registrationNumber": "ACI/REG/2026/000003",
+      "enrollmentNumber": "ACI/ENR/2026/000003",
+      "fullName": "Rahul Yadav",
+      "fatherName": "Surendra Yadav",
+      "motherName": "Kamla Devi",
+      "dob": "2001-11-30",
+      "gender": "Male",
+      "mobile": "9876543212",
+      "email": "rahul.yadav@example.com",
+      "address": "Near Naka, Ayodhya Cantt, UP",
+      "courseId": "course-python-ds",
+      "courseName": "Python & Data Science Specialist",
+      "duration": "6 Months",
+      "session": "2025-2026",
+      "admissionDate": "2025-06-15",
+      "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
+      "franchiseId": "fran-01",
+      "franchiseName": "Advance Institute of Digital Technology (Main Campus)",
+      "franchiseCode": "ACI-AYD-01",
+      "admissionStatus": "Under Review",
+      "academicStatus": "Admitted",
+      "createdAt": "2025-06-15T09:30:00.000Z"
+    }
+  ],
+  "marksRecords": [
+    {
+      "id": "marks-01",
+      "studentId": "stu-01",
+      "courseId": "course-adca",
+      "courseName": "Advanced Diploma in Computer Applications",
+      "subjects": [
+        {
+          "subjectName": "Computer Fundamentals & OS",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 62,
+          "practicalMarks": 18,
+          "internalMarks": 9,
+          "obtainedMarks": 89
+        },
+        {
+          "subjectName": "Office Automation (Word, Excel, PPT)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 54,
+          "practicalMarks": 28,
+          "internalMarks": 9,
+          "obtainedMarks": 91
+        },
+        {
+          "subjectName": "Financial Accounting with Tally Prime",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 45,
+          "practicalMarks": 36,
+          "internalMarks": 9,
+          "obtainedMarks": 90
+        },
+        {
+          "subjectName": "Desktop Publishing (Photoshop, CorelDraw)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 44,
+          "practicalMarks": 35,
+          "internalMarks": 8,
+          "obtainedMarks": 87
+        },
+        {
+          "subjectName": "Web Designing (HTML, CSS, JS)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 52,
+          "practicalMarks": 27,
+          "internalMarks": 9,
+          "obtainedMarks": 88
+        },
+        {
+          "subjectName": "Project & Viva-Voce",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 27,
+          "practicalMarks": 46,
+          "internalMarks": 19,
+          "obtainedMarks": 92
+        }
+      ],
+      "totalMaxMarks": 600,
+      "totalObtainedMarks": 537,
+      "percentage": 89.5,
+      "grade": "A+",
+      "result": "DISTINCTION",
+      "status": "APPROVED",
+      "submittedBy": "ACI-AYD-02",
+      "submittedAt": "2026-01-10T14:20:00.000Z",
+      "reviewedBy": "Amar Soni (Director)",
+      "reviewedAt": "2026-01-12T10:15:00.000Z",
+      "adminRemarks": "Verified and approved with distinction."
+    },
+    {
+      "id": "marks-02",
+      "studentId": "stu-02",
+      "courseId": "course-dca",
+      "courseName": "Diploma in Computer Applications",
+      "subjects": [
+        {
+          "subjectName": "Computer Fundamentals & Windows",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 58,
+          "practicalMarks": 17,
+          "internalMarks": 8,
+          "obtainedMarks": 83
+        },
+        {
+          "subjectName": "MS Office & Internet Applications",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 50,
+          "practicalMarks": 26,
+          "internalMarks": 8,
+          "obtainedMarks": 84
+        },
+        {
+          "subjectName": "Database Management Systems",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 48,
+          "practicalMarks": 24,
+          "internalMarks": 9,
+          "obtainedMarks": 81
+        },
+        {
+          "subjectName": "Practical Lab & Viva",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 25,
+          "practicalMarks": 44,
+          "internalMarks": 18,
+          "obtainedMarks": 87
+        }
+      ],
+      "totalMaxMarks": 400,
+      "totalObtainedMarks": 335,
+      "percentage": 83.75,
+      "grade": "A",
+      "result": "PASS",
+      "status": "APPROVED",
+      "submittedBy": "ACI-AYD-02",
+      "submittedAt": "2026-09-28T16:45:00.000Z",
+      "reviewedBy": "Amar Soni (Director)",
+      "reviewedAt": "2026-10-03T04:46:28.594Z",
+      "adminRemarks": "Approved by Director"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-01",
+      "certificateNumber": "ACI/CERT/2026/000001",
+      "studentId": "stu-01",
+      "studentName": "Amit Kumar Verma",
+      "fatherName": "Ram Shanker Verma",
+      "courseName": "Advanced Diploma in Computer Applications",
+      "duration": "12 Months",
+      "session": "2025-2026",
+      "enrollmentNumber": "ACI/ENR/2026/000001",
+      "registrationNumber": "ACI/REG/2026/000001",
+      "centerName": "ACI Faizabad City Tech Center",
+      "issueDate": "2026-01-15",
+      "grade": "A+",
+      "percentage": 89.5,
+      "status": "APPROVED",
+      "templateVersion": 1,
+      "qrCodeDataUrl": "data:image/png;base64,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",
+      "qrTargetUrl": "https://advancecomputerinstitute.com/verify-certificate/ACI/CERT/2026/000001",
+      "generatedAt": "2026-01-15T12:00:00.000Z",
+      "approvedAt": "2026-01-15T12:00:00.000Z"
+    },
+    {
+      "id": "cert-1791002792446",
+      "certificateNumber": "ACI/CERT/2026/000002",
+      "studentId": "stu-02",
+      "studentName": "Priya Sharma",
+      "fatherName": "Dinesh Sharma",
+      "courseName": "Diploma in Computer Applications",
+      "duration": "6 Months",
+      "session": "2025-2026",
+      "enrollmentNumber": "ACI/ENR/2026/000002",
+      "registrationNumber": "ACI/REG/2026/000002",
+      "centerName": "ACI Faizabad City Tech Center",
+      "issueDate": "2026-10-03",
+      "grade": "A",
+      "percentage": 83.75,
+      "status": "APPROVED",
+      "templateVersion": 1,
+      "qrCodeDataUrl": "data:image/png;base64,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",
+      "qrTargetUrl": "https://advancecomputerinstitute.com/verify-certificate/ACI/CERT/2026/000002",
+      "generatedAt": "2026-10-03T04:46:32.446Z",
+      "approvedAt": "2026-10-03T04:46:32.446Z"
+    }
+  ],
+  "marksheets": [
+    {
+      "id": "mark-01",
+      "marksheetNumber": "ACI/MARK/2026/000001",
+      "studentId": "stu-01",
+      "studentName": "Amit Kumar Verma",
+      "fatherName": "Ram Shanker Verma",
+      "motherName": "Sunita Devi",
+      "courseName": "Advanced Diploma in Computer Applications",
+      "duration": "12 Months",
+      "session": "2025-2026",
+      "enrollmentNumber": "ACI/ENR/2026/000001",
+      "registrationNumber": "ACI/REG/2026/000001",
+      "centerName": "ACI Faizabad City Tech Center",
+      "marksRecordId": "marks-01",
+      "subjects": [
+        {
+          "subjectName": "Computer Fundamentals & OS",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 62,
+          "practicalMarks": 18,
+          "internalMarks": 9,
+          "obtainedMarks": 89
+        },
+        {
+          "subjectName": "Office Automation (Word, Excel, PPT)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 54,
+          "practicalMarks": 28,
+          "internalMarks": 9,
+          "obtainedMarks": 91
+        },
+        {
+          "subjectName": "Financial Accounting with Tally Prime",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 45,
+          "practicalMarks": 36,
+          "internalMarks": 9,
+          "obtainedMarks": 90
+        },
+        {
+          "subjectName": "Desktop Publishing (Photoshop, CorelDraw)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 44,
+          "practicalMarks": 35,
+          "internalMarks": 8,
+          "obtainedMarks": 87
+        },
+        {
+          "subjectName": "Web Designing (HTML, CSS, JS)",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 52,
+          "practicalMarks": 27,
+          "internalMarks": 9,
+          "obtainedMarks": 88
+        },
+        {
+          "subjectName": "Project & Viva-Voce",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 27,
+          "practicalMarks": 46,
+          "internalMarks": 19,
+          "obtainedMarks": 92
+        }
+      ],
+      "totalMax": 600,
+      "totalObtained": 537,
+      "percentage": 89.5,
+      "grade": "A+",
+      "result": "PASS (DISTINCTION)",
+      "issueDate": "2026-01-15",
+      "status": "APPROVED",
+      "templateVersion": 1,
+      "qrCodeDataUrl": "data:image/png;base64,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",
+      "qrTargetUrl": "https://advancecomputerinstitute.com/verify-marksheet/ACI/MARK/2026/000001",
+      "generatedAt": "2026-01-15T12:00:00.000Z",
+      "approvedAt": "2026-01-15T12:00:00.000Z"
+    },
+    {
+      "id": "mark-1791002812361",
+      "marksheetNumber": "ACI/MARK/2026/000002",
+      "studentId": "stu-02",
+      "studentName": "Priya Sharma",
+      "fatherName": "Dinesh Sharma",
+      "motherName": "Reeta Sharma",
+      "courseName": "Diploma in Computer Applications",
+      "duration": "6 Months",
+      "session": "2025-2026",
+      "enrollmentNumber": "ACI/ENR/2026/000002",
+      "registrationNumber": "ACI/REG/2026/000002",
+      "centerName": "ACI Faizabad City Tech Center",
+      "marksRecordId": "marks-02",
+      "subjects": [
+        {
+          "subjectName": "Computer Fundamentals & Windows",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 58,
+          "practicalMarks": 17,
+          "internalMarks": 8,
+          "obtainedMarks": 83
+        },
+        {
+          "subjectName": "MS Office & Internet Applications",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 50,
+          "practicalMarks": 26,
+          "internalMarks": 8,
+          "obtainedMarks": 84
+        },
+        {
+          "subjectName": "Database Management Systems",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 48,
+          "practicalMarks": 24,
+          "internalMarks": 9,
+          "obtainedMarks": 81
+        },
+        {
+          "subjectName": "Practical Lab & Viva",
+          "maxMarks": 100,
+          "minMarks": 40,
+          "theoryMarks": 25,
+          "practicalMarks": 44,
+          "internalMarks": 18,
+          "obtainedMarks": 87
+        }
+      ],
+      "totalMax": 400,
+      "totalObtained": 335,
+      "percentage": 83.75,
+      "grade": "A",
+      "result": "PASS",
+      "issueDate": "2026-10-03",
+      "status": "APPROVED",
+      "templateVersion": 1,
+      "qrCodeDataUrl": "data:image/png;base64,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",
+      "qrTargetUrl": "https://advancecomputerinstitute.com/verify-marksheet/ACI/MARK/2026/000002",
+      "generatedAt": "2026-10-03T04:46:52.361Z",
+      "approvedAt": "2026-10-03T04:46:52.361Z"
+    }
+  ],
+  "certificateTemplates": [
+    {
+      "id": "template-cert-v1",
+      "title": "Official ACI Golden Heritage Certificate",
+      "version": 1,
+      "themeColor": "#0f2942",
+      "secondaryColor": "#c59b27",
+      "fontFamily": "Cinzel",
+      "borderStyle": "ornate-gold",
+      "showInstituteLogo": true,
+      "showStudentPhoto": true,
+      "showDirectorSignature": true,
+      "showAuthorizedSignature": true,
+      "showSeal": true,
+      "showQrCode": true,
+      "showWatermark": true,
+      "watermarkLogoUrl": "/aidt-logo.svg",
+      "watermarkOpacity": 0.08,
+      "watermarkSize": 420,
+      "certificateTitle": "Certificate of Proficiency",
+      "certificationText": "This is to officially certify that",
+      "completionText": "having successfully completed the prescribed curriculum and passed the examination conducted by Advance Institute of Digital Technology for the program:",
+      "directorTitle": "Founder & Director",
+      "headerText": "ADVANCE INSTITUTE OF DIGITAL TECHNOLOGY",
+      "subHeaderText": "An Autonomous Institute for Advanced Computer Training & Professional Skills",
+      "footerText": "This certificate can be verified online at advancecomputerinstitute.com/verify-certificate",
+      "watermarkText": "ADVANCE INSTITUTE OF DIGITAL TECHNOLOGY",
+      "updatedAt": "2026-10-03T04:40:44.195Z"
+    }
+  ],
+  "marksheetTemplates": [
+    {
+      "id": "template-mark-v1",
+      "title": "Official ACI Academic Transcript Marksheet",
+      "version": 1,
+      "themeColor": "#1e3a8a",
+      "fontFamily": "Inter",
+      "borderStyle": "formal-academic",
+      "showPhoto": true,
+      "showSeal": true,
+      "showQrCode": true,
+      "showWatermark": true,
+      "watermarkLogoUrl": "/aidt-logo.svg",
+      "watermarkOpacity": 0.07,
+      "watermarkSize": 380,
+      "marksheetTitle": "Statement of Marks / Academic Transcript",
+      "subHeaderTitle": "Issued by the Controller of Examinations, Advance Institute of Digital Technology",
+      "gradingTableVisible": true,
+      "remarksVisible": true,
+      "footerNotice": "Official Marks Statement issued by Advance Institute of Digital Technology Ayodhya Cantt • Online Public Verification at advancecomputerinstitute.com/verify-marksheet",
+      "updatedAt": "2026-10-03T04:40:44.195Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-1791004394175-17",
+      "timestamp": "2026-10-03T05:13:14.175Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "UPDATE_SETTINGS",
+      "entity": "Settings",
+      "entityId": "institute_settings",
+      "details": "Updated institute branding and grading rules"
+    },
+    {
+      "id": "log-1791003091062-557",
+      "timestamp": "2026-10-03T04:51:31.062Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "UPDATE_SETTINGS",
+      "entity": "Settings",
+      "entityId": "institute_settings",
+      "details": "Updated institute branding and grading rules"
+    },
+    {
+      "id": "log-1791002812361-179",
+      "timestamp": "2026-10-03T04:46:52.361Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "GENERATE_MARKSHEET",
+      "entity": "Marksheet",
+      "entityId": "mark-1791002812361",
+      "details": "Generated and published marksheet ACI/MARK/2026/000002 for Priya Sharma"
+    },
+    {
+      "id": "log-1791002792446-341",
+      "timestamp": "2026-10-03T04:46:32.446Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "GENERATE_CERTIFICATE",
+      "entity": "Certificate",
+      "entityId": "cert-1791002792446",
+      "details": "Generated and published certificate ACI/CERT/2026/000002 for Priya Sharma"
+    },
+    {
+      "id": "log-1791002788594-929",
+      "timestamp": "2026-10-03T04:46:28.594Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "APPROVE_MARKS",
+      "entity": "MarksRecord",
+      "entityId": "marks-02",
+      "details": "Approved marks for Priya Sharma (83.75%, Grade A)"
+    },
+    {
+      "id": "log-01",
+      "timestamp": "2026-01-12T10:15:00.000Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "APPROVED_MARKS",
+      "entity": "MarksRecord",
+      "entityId": "marks-01",
+      "details": "Approved marks for Amit Kumar Verma (ACI/ENR/2026/000001)"
+    },
+    {
+      "id": "log-02",
+      "timestamp": "2026-01-15T12:00:00.000Z",
+      "userEmail": "admin@advancecomputerinstitute.com",
+      "userRole": "admin",
+      "action": "GENERATED_CERTIFICATE",
+      "entity": "Certificate",
+      "entityId": "cert-01",
+      "details": "Issued official certificate ACI/CERT/2026/000001"
+    }
+  ],
+  "notices": [
+    {
+      "id": "notice-1",
+      "title": "Admissions Open for Session 2026-2027",
+      "content": "Special discounted fee live now: ADCA ₹6,500 (was ₹12,000), DCA ₹4,500 (was ₹8,000), Tally Prime + GST ₹3,000 (was ₹6,000), Python & Data Science ₹12,000 (was ₹20,000), Web Designing ₹8,000 (was ₹15,000)!",
+      "linkText": "Apply Online",
+      "linkUrl": "admission",
+      "isActive": true,
+      "priority": "urgent",
+      "createdAt": "2026-01-10T08:00:00.000Z"
+    },
+    {
+      "id": "notice-2",
+      "title": "Director Mr. Amar Soni (MCA, Data Science) Special Batches",
+      "content": "Hands-on practical training in Machine Learning, Python, and Full-Stack Web Development at Ayodhya Cantt Main Campus.",
+      "linkText": "Explore Courses",
+      "linkUrl": "courses",
+      "isActive": true,
+      "priority": "highlight",
+      "createdAt": "2026-01-12T09:00:00.000Z"
+    },
+    {
+      "id": "notice-3",
+      "title": "Instant QR Code Verification System Activated",
+      "content": "All marksheets and certificates issued by Advance Institute of Digital Technology are verifiable online 24/7 with anti-fraud QR authentication.",
+      "linkText": "Verify Credential",
+      "linkUrl": "verify",
+      "isActive": true,
+      "priority": "normal",
+      "createdAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": "notice-4",
+      "title": "Authorized Franchise Study Centers Invitation",
+      "content": "Open an affiliated computer training center in your town/district with complete curriculum and autonomous certification rights.",
+      "linkText": "Affiliate Center",
+      "linkUrl": "franchise",
+      "isActive": true,
+      "priority": "normal",
+      "createdAt": "2026-01-20T11:00:00.000Z"
+    }
+  ],
+  "counters": {
+    "reg": 3,
+    "enr": 3,
+    "cert": 2,
+    "mark": 2
+  }
+}

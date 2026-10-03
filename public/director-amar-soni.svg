@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="directorBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2942" />
+      <stop offset="50%" stop-color="#19385c" />
+      <stop offset="100%" stop-color="#091b2c" />
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2a172" />
+      <stop offset="50%" stop-color="#d48f5e" />
+      <stop offset="100%" stop-color="#b97346" />
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#242830" />
+      <stop offset="50%" stop-color="#14171c" />
+      <stop offset="100%" stop-color="#0b0d10" />
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#262220" />
+      <stop offset="100%" stop-color="#111111" />
+    </linearGradient>
+    <filter id="portraitShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Card -->
+  <rect width="400" height="520" rx="20" fill="url(#directorBg)" />
+  <rect x="10" y="10" width="380" height="500" rx="16" fill="none" stroke="url(#goldAccent)" stroke-width="2" stroke-opacity="0.5" />
+
+  <!-- Radial subtle highlight behind head -->
+  <circle cx="200" cy="180" r="130" fill="#f59e0b" fill-opacity="0.08" />
+
+  <!-- Portrait Character Composition (Mr. Amar Soni) -->
+  <g filter="url(#portraitShadow)">
+    <!-- Neck -->
+    <path d="M175,200 L225,200 L230,250 L170,250 Z" fill="url(#skinGrad)" />
+    
+    <!-- Head & Ears -->
+    <ellipse cx="140" cy="175" rx="10" ry="16" fill="url(#skinGrad)" />
+    <ellipse cx="260" cy="175" rx="10" ry="16" fill="url(#skinGrad)" />
+    <path d="M148,150 C145,210 160,238 200,238 C240,238 255,210 252,150 C250,110 235,100 200,100 C165,100 150,110 148,150 Z" fill="url(#skinGrad)" />
+
+    <!-- Hair (Styled neat pompadour / side fade) -->
+    <path d="M142,145 C138,105 160,78 200,75 C240,78 262,105 258,145 C250,130 240,115 200,115 C160,115 150,130 142,145 Z" fill="url(#hairGrad)" />
+    <path d="M140,150 C145,135 155,120 180,115 C200,112 245,110 255,145 C256,155 252,165 250,165 C248,140 230,125 200,125 C170,125 152,140 148,165 Z" fill="#0d0d0d" />
+
+    <!-- Beard & Moustache (Neat, well-groomed beard) -->
+    <path d="M152,175 C156,215 170,236 200,236 C230,236 244,215 248,175 C242,185 235,215 200,215 C165,215 158,185 152,175 Z" fill="url(#hairGrad)" opacity="0.9" />
+    <path d="M178,188 C185,183 195,183 200,186 C205,183 215,183 222,188 C215,193 205,193 200,190 C195,193 185,193 178,188 Z" fill="#141414" />
+    <!-- Smile & Lips -->
+    <path d="M185,198 Q200,208 215,198 Q200,203 185,198" fill="#a8523c" />
+
+    <!-- Eyes and Eyebrows -->
+    <!-- Left eyebrow & eye -->
+    <path d="M162,146 Q175,142 184,148" stroke="#1a1a1a" stroke-width="4.5" stroke-linecap="round" fill="none" />
+    <ellipse cx="173" cy="156" rx="6" ry="4" fill="#2d1b11" />
+    <circle cx="174" cy="155" r="1.5" fill="#ffffff" />
+    <!-- Right eyebrow & eye -->
+    <path d="M216,148 Q225,142 238,146" stroke="#1a1a1a" stroke-width="4.5" stroke-linecap="round" fill="none" />
+    <ellipse cx="227" cy="156" rx="6" ry="4" fill="#2d1b11" />
+    <circle cx="228" cy="155" r="1.5" fill="#ffffff" />
+
+    <!-- Nose -->
+    <path d="M198,154 L196,175 Q200,178 204,175 Z" fill="#c47849" opacity="0.6" />
+
+    <!-- Black Silk Button-down Shirt -->
+    <path d="M110,310 C100,250 135,230 170,240 L200,270 L230,240 C265,230 300,250 290,310 L330,440 L70,440 Z" fill="url(#shirtGrad)" />
+    
+    <!-- Collar -->
+    <path d="M170,240 L200,280 L188,245 Z" fill="#30353f" />
+    <path d="M230,240 L200,280 L212,245 Z" fill="#30353f" />
+    <!-- Buttons placket -->
+    <line x1="200" y1="280" x2="200" y2="440" stroke="#1f232b" stroke-width="4" />
+    <circle cx="200" cy="300" r="3" fill="#3b4252" />
+    <circle cx="200" cy="335" r="3" fill="#3b4252" />
+    <circle cx="200" cy="370" r="3" fill="#3b4252" />
+
+    <!-- Crossed Arms (as in user's photo PHOOT.png) -->
+    <!-- Left Forearm crossing right -->
+    <path d="M85,320 C100,380 140,410 240,410 C270,410 300,380 315,320 C300,335 270,360 210,360 C150,360 100,335 85,320 Z" fill="#181c24" />
+    <!-- Forearm & Hand details -->
+    <path d="M130,375 C160,390 220,395 270,380 L275,395 C220,415 150,405 125,385 Z" fill="#1c212b" stroke="#2b313d" stroke-width="1.5" />
+    <!-- Hands tucked in arms -->
+    <path d="M260,375 C275,372 290,385 285,398 C275,402 260,395 260,375 Z" fill="url(#skinGrad)" />
+    <path d="M140,375 C125,372 110,385 115,398 C125,402 140,395 140,375 Z" fill="url(#skinGrad)" />
+
+    <!-- Wrist Watch (Silver Executive Watch on left wrist) -->
+    <rect x="145" y="380" width="14" height="20" rx="3" fill="#94a3b8" stroke="#475569" stroke-width="1" transform="rotate(-15, 152, 390)" />
+    <circle cx="152" cy="390" r="5" fill="#0f172a" />
+  </g>
+
+  <!-- Gold Title Badge at bottom -->
+  <g transform="translate(40, 440)">
+    <rect width="320" height="60" rx="10" fill="#0b1726" stroke="url(#goldAccent)" stroke-width="1.5" />
+    <text x="160" y="26" font-family="'Cinzel', serif" font-weight="800" font-size="16" fill="#fef08a" text-anchor="middle" letter-spacing="1.5">
+      MR. AMAR SONI
+    </text>
+    <text x="160" y="45" font-family="'Inter', sans-serif" font-weight="600" font-size="11" fill="#93c5fd" text-anchor="middle" letter-spacing="1">
+      DIRECTOR &amp; FOUNDER (MCA, DATA SCIENCE)
+    </text>
+  </g>
+</svg>
