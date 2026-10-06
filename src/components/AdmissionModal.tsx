@@ -32,7 +32,7 @@ export const AdmissionModal: React.FC<Props> = ({
     address: '',
     courseId: selectedCourseId || courses[0]?.id || 'course-adca',
     franchiseId: franchises[0]?.id || 'fran-01',
-    photoUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
+    photoUrl: '',
   });
 
   React.useEffect(() => {

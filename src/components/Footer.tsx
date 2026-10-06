@@ -55,6 +55,22 @@ export const Footer: React.FC<Props> = ({
           <ul className="space-y-2">
             <li>
               <button
+                onClick={() => setActiveView('mcq')}
+                className="hover:text-amber-300 transition-colors text-left flex items-center gap-1.5 font-bold text-amber-400"
+              >
+                <span>⚡ MCQ Practice Tests (CCC / O'Level)</span>
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => setActiveView('notes')}
+                className="hover:text-blue-300 transition-colors text-left flex items-center gap-1.5 font-bold text-blue-400"
+              >
+                <span>📚 PDF Notes &amp; Handouts</span>
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => setActiveView('verify-cert')}
                 className="hover:text-amber-300 transition-colors text-left flex items-center gap-1.5"
               >

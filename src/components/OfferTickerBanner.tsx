@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Clock, ArrowRight, X, Flame } from 'lucide-react';
+import { Sparkles, Clock, ArrowRight, X, Flame, Building2 } from 'lucide-react';
 import { InstituteSettings } from '../types/index.ts';
 
 interface OfferTickerBannerProps {
   settings: InstituteSettings;
   onOpenOfferModal: () => void;
   onOpenAdmission: () => void;
+  onOpenFranchise?: () => void;
 }
 
 export const OfferTickerBanner: React.FC<OfferTickerBannerProps> = ({
   settings,
   onOpenOfferModal,
   onOpenAdmission,
+  onOpenFranchise,
 }) => {
   const [timeLeft, setTimeLeft] = useState<{ hours: number; minutes: number; seconds: number }>({
     hours: 14,
@@ -108,12 +110,24 @@ export const OfferTickerBanner: React.FC<OfferTickerBannerProps> = ({
 
         {/* Right: Actions */}
         <div className="flex items-center gap-2 shrink-0 ml-auto sm:ml-0">
+          {onOpenFranchise && (
+            <button
+              onClick={onOpenFranchise}
+              className="px-2.5 py-1 bg-blue-950 hover:bg-slate-900 border border-amber-300 text-white rounded-md text-[11px] font-bold flex items-center gap-1.5 shadow-sm transition-transform active:scale-95 cursor-pointer"
+            >
+              <Building2 className="w-3 h-3 text-amber-300" />
+              <span>Free Franchise:</span>
+              <span className="line-through text-red-300 text-[10px] font-normal">₹1,100</span>
+              <span className="bg-emerald-600 text-white text-[9px] px-1 rounded font-black">₹0 (ZERO FEE)</span>
+            </button>
+          )}
+
           <button
             onClick={onOpenOfferModal}
             className="px-2.5 py-1 bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-extrabold rounded-md shadow-sm text-[11px] flex items-center gap-1 transition-transform active:scale-95 cursor-pointer"
           >
             <Sparkles className="w-3 h-3 text-red-700" />
-            <span>View All Discounts</span>
+            <span>Discounts</span>
           </button>
 
           <button

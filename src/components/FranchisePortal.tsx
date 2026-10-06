@@ -16,6 +16,10 @@ import {
   Eye,
   Lock,
   Printer,
+  User,
+  KeyRound,
+  CheckCircle2,
+  X,
 } from 'lucide-react';
 
 interface Props {
@@ -48,7 +52,7 @@ export const FranchisePortal: React.FC<Props> = ({ settings, franchiseId = 'fran
     email: '',
     address: '',
     courseId: 'course-adca',
-    photoUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
+    photoUrl: '',
   });
 
   // Marks Entry Form
@@ -59,9 +63,59 @@ export const FranchisePortal: React.FC<Props> = ({ settings, franchiseId = 'fran
   const [previewCert, setPreviewCert] = useState<any | null>(null);
   const [previewMark, setPreviewMark] = useState<any | null>(null);
 
+  // Password Change State
+  const [isPwdModalOpen, setIsPwdModalOpen] = useState(false);
+  const [currentPwd, setCurrentPwd] = useState('');
+  const [newPwd, setNewPwd] = useState('');
+  const [confirmPwd, setConfirmPwd] = useState('');
+  const [pwdError, setPwdError] = useState<string | null>(null);
+  const [pwdSuccess, setPwdSuccess] = useState<string | null>(null);
+  const [changingPwd, setChangingPwd] = useState(false);
+
   const showToast = (message: string, type: 'success' | 'error' = 'success') => {
     setFeedback({ message, type });
     setTimeout(() => setFeedback(null), 4000);
+  };
+
+  const handleChangePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newPwd || newPwd.length < 4) {
+      setPwdError('New password must be at least 4 characters long.');
+      return;
+    }
+    if (newPwd !== confirmPwd) {
+      setPwdError('New passwords do not match. Please re-enter.');
+      return;
+    }
+
+    setChangingPwd(true);
+    setPwdError(null);
+    setPwdSuccess(null);
+
+    try {
+      const res = await api.changePassword({
+        referenceId: data?.franchise?.id,
+        currentPassword: currentPwd,
+        newPassword: newPwd,
+        role: 'franchise',
+      });
+      if (res.success) {
+        setPwdSuccess('Center password updated successfully!');
+        setCurrentPwd('');
+        setNewPwd('');
+        setConfirmPwd('');
+        setTimeout(() => {
+          setIsPwdModalOpen(false);
+          setPwdSuccess(null);
+        }, 2200);
+      } else {
+        setPwdError(res.error || 'Failed to update password. Verify current password.');
+      }
+    } catch (err: any) {
+      setPwdError('Connection error while changing password.');
+    } finally {
+      setChangingPwd(false);
+    }
   };
 
   const loadFranchiseData = async () => {
@@ -130,7 +184,7 @@ export const FranchisePortal: React.FC<Props> = ({ settings, franchiseId = 'fran
           email: '',
           address: '',
           courseId: 'course-adca',
-          photoUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&h=200&fit=crop',
+          photoUrl: '',
         });
         loadFranchiseData();
         setActiveTab('students');
@@ -253,6 +307,20 @@ export const FranchisePortal: React.FC<Props> = ({ settings, franchiseId = 'fran
               {approvedCertificates.length}
             </span>
           </button>
+
+          <div className="pt-3 border-t border-[#1a3d60] mt-3">
+            <button
+              onClick={() => {
+                setIsPwdModalOpen(true);
+                setPwdError(null);
+                setPwdSuccess(null);
+              }}
+              className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg font-medium transition-colors text-amber-300 hover:bg-[#1a3d60] border border-amber-500/20 cursor-pointer text-xs"
+            >
+              <KeyRound className="w-4 h-4 text-amber-400" />
+              <span>Change Password</span>
+            </button>
+          </div>
         </nav>
       </aside>
 
@@ -365,11 +433,17 @@ export const FranchisePortal: React.FC<Props> = ({ settings, franchiseId = 'fran
                     return (
                       <tr key={stu.id} className="hover:bg-slate-50">
                         <td className="p-3">
-                          <img
-                            src={stu.photoUrl}
-                            alt=""
-                            className="w-8 h-8 rounded-full object-cover border"
-                          />
+                          {stu.photoUrl ? (
+                            <img
+                              src={stu.photoUrl}
+                              alt=""
+                              className="w-8 h-8 rounded-full object-cover border"
+                            />
+                          ) : (
+                            <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400">
+                              <User className="w-4 h-4" />
+                            </div>
+                          )}
                         </td>
                         <td className="p-3 font-bold text-slate-900">{stu.fullName}</td>
                         <td className="p-3 font-mono text-[11px] text-slate-600">
@@ -735,6 +809,103 @@ export const FranchisePortal: React.FC<Props> = ({ settings, franchiseId = 'fran
           isModal={true}
           onClose={() => setPreviewMark(null)}
         />
+      )}
+
+      {/* Change Center Password Modal */}
+      {isPwdModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/75 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative animate-in fade-in border border-slate-200">
+            <div className="flex items-center justify-between border-b pb-3 mb-4">
+              <div className="flex items-center gap-2">
+                <KeyRound className="w-5 h-5 text-amber-600" />
+                <h3 className="font-bold text-slate-900 text-base">Change Franchise Center Password</h3>
+              </div>
+              <button
+                onClick={() => setIsPwdModalOpen(false)}
+                className="p-1.5 text-slate-400 hover:text-slate-700 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {pwdSuccess ? (
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-center space-y-2">
+                <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+                <h4 className="font-bold text-slate-900 text-sm">Success!</h4>
+                <p className="text-xs text-slate-700">{pwdSuccess}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleChangePassword} className="space-y-3.5">
+                {pwdError && (
+                  <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 shrink-0" />
+                    <span>{pwdError}</span>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Current Password (If known)
+                  </label>
+                  <input
+                    type="password"
+                    value={currentPwd}
+                    onChange={(e) => setCurrentPwd(e.target.value)}
+                    placeholder="Enter current center password"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs text-slate-800 focus:ring-2 focus:ring-[#0f2942]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    New Center Password *
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    minLength={4}
+                    value={newPwd}
+                    onChange={(e) => setNewPwd(e.target.value)}
+                    placeholder="Minimum 4 characters"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs text-slate-800 focus:ring-2 focus:ring-[#0f2942]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Confirm New Password *
+                  </label>
+                  <input
+                    type="password"
+                    required
+                    minLength={4}
+                    value={confirmPwd}
+                    onChange={(e) => setConfirmPwd(e.target.value)}
+                    placeholder="Re-enter new password"
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs text-slate-800 focus:ring-2 focus:ring-[#0f2942]"
+                  />
+                </div>
+
+                <div className="pt-2 flex items-center justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsPwdModalOpen(false)}
+                    className="px-4 py-2 border border-slate-300 text-slate-700 font-semibold rounded-lg text-xs hover:bg-slate-50 cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={changingPwd}
+                    className="px-5 py-2 bg-[#0f2942] hover:bg-[#1a3d60] text-white font-bold rounded-lg text-xs transition-colors cursor-pointer shadow-sm disabled:opacity-50"
+                  >
+                    {changingPwd ? 'Updating...' : 'Save Center Password'}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

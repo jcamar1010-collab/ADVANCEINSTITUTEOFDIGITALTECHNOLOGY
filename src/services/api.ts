@@ -11,6 +11,10 @@ import {
   AuditLog,
   User,
   NoticeItem,
+  MCQQuestion,
+  PdfNote,
+  PdfDownloadRequest,
+  PasswordResetRequest,
 } from '../types/index.ts';
 
 const API_BASE = '/api';
@@ -24,6 +28,40 @@ export const api = {
 
   getCourses: async (): Promise<Course[]> => {
     const res = await fetch(`${API_BASE}/public/courses`);
+    return res.json();
+  },
+
+  addCourse: async (data: Partial<Course>) => {
+    const res = await fetch(`${API_BASE}/admin/courses`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  updateCourse: async (id: string, data: Partial<Course>) => {
+    const res = await fetch(`${API_BASE}/admin/courses/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  deleteCourse: async (id: string) => {
+    const res = await fetch(`${API_BASE}/admin/courses/${id}`, {
+      method: 'DELETE',
+    });
+    return res.json();
+  },
+
+  updateMarksheetTopics: async (studentId: string, data: { subjects: any[] }) => {
+    const res = await fetch(`${API_BASE}/admin/students/${studentId}/marksheet/topics`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
     return res.json();
   },
 
@@ -53,6 +91,108 @@ export const api = {
   deleteNotice: async (id: string) => {
     const res = await fetch(`${API_BASE}/admin/notices/${id}`, {
       method: 'DELETE',
+    });
+    return res.json();
+  },
+
+  // MCQ Practice & Questions
+  getMCQs: async (category?: string): Promise<MCQQuestion[]> => {
+    const url = category && category !== 'ALL' ? `${API_BASE}/mcqs?category=${encodeURIComponent(category)}` : `${API_BASE}/mcqs`;
+    const res = await fetch(url);
+    return res.json();
+  },
+
+  addMCQ: async (data: Partial<MCQQuestion>) => {
+    const res = await fetch(`${API_BASE}/admin/mcqs`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  updateMCQ: async (id: string, data: Partial<MCQQuestion>) => {
+    const res = await fetch(`${API_BASE}/admin/mcqs/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  deleteMCQ: async (id: string) => {
+    const res = await fetch(`${API_BASE}/admin/mcqs/${id}`, {
+      method: 'DELETE',
+    });
+    return res.json();
+  },
+
+  // PDF Notes & Study Material
+  getPdfNotes: async (): Promise<PdfNote[]> => {
+    const res = await fetch(`${API_BASE}/notes`);
+    return res.json();
+  },
+
+  addPdfNote: async (data: Partial<PdfNote>) => {
+    const res = await fetch(`${API_BASE}/admin/notes`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  updatePdfNote: async (id: string, data: Partial<PdfNote>) => {
+    const res = await fetch(`${API_BASE}/admin/notes/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  deletePdfNote: async (id: string) => {
+    const res = await fetch(`${API_BASE}/admin/notes/${id}`, {
+      method: 'DELETE',
+    });
+    return res.json();
+  },
+
+  // PDF Download Requests & Admin Approvals
+  requestPdfDownload: async (data: {
+    pdfId: string;
+    studentName: string;
+    mobile: string;
+    amountPaid?: number;
+    utrNumber?: string;
+    paymentScreenshotUrl?: string;
+  }) => {
+    const res = await fetch(`${API_BASE}/notes/request-download`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  checkPdfApproval: async (mobile: string, pdfId?: string) => {
+    const url = pdfId
+      ? `${API_BASE}/notes/check-approval?mobile=${encodeURIComponent(mobile)}&pdfId=${encodeURIComponent(pdfId)}`
+      : `${API_BASE}/notes/check-approval?mobile=${encodeURIComponent(mobile)}`;
+    const res = await fetch(url);
+    return res.json();
+  },
+
+  getPdfRequests: async (): Promise<PdfDownloadRequest[]> => {
+    const res = await fetch(`${API_BASE}/admin/pdf-requests`);
+    return res.json();
+  },
+
+  reviewPdfRequest: async (id: string, action: 'APPROVE' | 'REJECT', remarks?: string) => {
+    const res = await fetch(`${API_BASE}/admin/pdf-requests/${id}/review`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action, remarks }),
     });
     return res.json();
   },
@@ -247,6 +387,107 @@ export const api = {
   // Student
   getStudentProfile: async (studentId: string) => {
     const res = await fetch(`${API_BASE}/student/profile/${studentId}`);
+    return res.json();
+  },
+
+  // Database, Storage & System Control
+  getDatabaseStats: async () => {
+    const res = await fetch(`${API_BASE}/admin/database/stats`);
+    return res.json();
+  },
+
+  downloadDatabaseBackup: () => {
+    window.open(`${API_BASE}/admin/database/backup`, '_blank');
+  },
+
+  restoreDatabase: async (data: any) => {
+    const res = await fetch(`${API_BASE}/admin/database/restore`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  optimizeDatabase: async () => {
+    const res = await fetch(`${API_BASE}/admin/database/optimize`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return res.json();
+  },
+
+  // Password & User Access Control
+  changePassword: async (data: { userId?: string; currentPassword?: string; newPassword: string; role?: string; referenceId?: string }) => {
+    const res = await fetch(`${API_BASE}/user/change-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  requestForgotPassword: async (data: { role: 'student' | 'franchise'; identifier: string; registeredMobile: string }) => {
+    const res = await fetch(`${API_BASE}/auth/forgot-password-request`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return res.json();
+  },
+
+  getPasswordResetRequests: async (): Promise<PasswordResetRequest[]> => {
+    const res = await fetch(`${API_BASE}/admin/password-reset-requests`);
+    return res.json();
+  },
+
+  resolvePasswordResetRequest: async (id: string, data?: { newPassword?: string; adminRemarks?: string }) => {
+    const res = await fetch(`${API_BASE}/admin/password-reset-requests/${id}/resolve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data || {}),
+    });
+    return res.json();
+  },
+
+  getUsersList: async (): Promise<User[]> => {
+    const res = await fetch(`${API_BASE}/admin/users`);
+    return res.json();
+  },
+
+  adminResetUserPassword: async (userId: string, newPassword: string) => {
+    const res = await fetch(`${API_BASE}/admin/users/reset-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId, newPassword }),
+    });
+    return res.json();
+  },
+
+  adminAddUser: async (userData: any) => {
+    const res = await fetch(`${API_BASE}/admin/users/add`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
+    });
+    return res.json();
+  },
+
+  adminRemoveUser: async (userId: string) => {
+    const res = await fetch(`${API_BASE}/admin/users/remove`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId }),
+    });
+    return res.json();
+  },
+
+  adminUpdateUser: async (userId: string, data: any) => {
+    const res = await fetch(`${API_BASE}/admin/users/${userId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
     return res.json();
   },
 };

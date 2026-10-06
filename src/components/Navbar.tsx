@@ -14,6 +14,10 @@ import {
   X,
   LogOut,
   ChevronDown,
+  HelpCircle,
+  FileText,
+  BrainCircuit,
+  BookOpen,
 } from 'lucide-react';
 
 interface Props {
@@ -104,6 +108,35 @@ export const Navbar: React.FC<Props> = ({
             Home
           </button>
 
+          {/* MCQ Practice Tab */}
+          <button
+            onClick={() => setActiveView('mcq')}
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
+              activeView === 'mcq'
+                ? 'text-amber-900 bg-amber-100/80 font-bold border border-amber-300'
+                : 'hover:text-amber-800 hover:bg-amber-50'
+            }`}
+          >
+            <BrainCircuit className="w-3.5 h-3.5 text-amber-600" />
+            <span>MCQ Practice</span>
+            <span className="px-1.5 py-0.5 bg-amber-500 text-slate-950 font-extrabold rounded-full text-[9px]">
+              CCC / O'Level
+            </span>
+          </button>
+
+          {/* PDF Notes Tab */}
+          <button
+            onClick={() => setActiveView('notes')}
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
+              activeView === 'notes'
+                ? 'text-blue-900 bg-blue-100/80 font-bold border border-blue-300'
+                : 'hover:text-blue-900 hover:bg-blue-50'
+            }`}
+          >
+            <BookOpen className="w-3.5 h-3.5 text-blue-700" />
+            <span>PDF Notes</span>
+          </button>
+
           {/* Verification Dropdown */}
           <div className="relative">
             <button
@@ -148,16 +181,21 @@ export const Navbar: React.FC<Props> = ({
 
           <button
             onClick={onOpenAdmission}
-            className="flex items-center gap-1 px-3 py-1.5 text-amber-900 hover:bg-amber-50 rounded-md font-semibold"
+            className="flex items-center gap-1 px-3 py-1.5 text-amber-900 hover:bg-amber-50 rounded-md font-semibold cursor-pointer"
           >
             <UserPlus className="w-3.5 h-3.5 text-amber-700" /> Admission
           </button>
 
           <button
             onClick={onOpenFranchise}
-            className="flex items-center gap-1 px-3 py-1.5 text-blue-900 hover:bg-blue-50 rounded-md font-semibold"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-950 rounded-md font-bold transition-all border border-blue-200 shadow-2xs cursor-pointer group"
           >
-            <Building2 className="w-3.5 h-3.5 text-blue-700" /> Franchise Center
+            <Building2 className="w-3.5 h-3.5 text-blue-700" />
+            <span>Franchise Center</span>
+            <span className="flex items-center gap-1 px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-black tracking-tight shadow-xs">
+              <span className="line-through text-emerald-200 opacity-90 font-medium">₹1,100</span>
+              <span className="text-yellow-300 font-extrabold">FREE ₹0</span>
+            </span>
           </button>
 
           {/* User Logged in / Portals Button */}
@@ -257,6 +295,24 @@ export const Navbar: React.FC<Props> = ({
           </button>
           <button
             onClick={() => {
+              setActiveView('mcq');
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left py-2 text-amber-900 border-b border-slate-100 flex items-center gap-2 font-bold"
+          >
+            <BrainCircuit className="w-4 h-4 text-amber-600" /> MCQ Practice Tests (CCC / O'Level)
+          </button>
+          <button
+            onClick={() => {
+              setActiveView('notes');
+              setMobileMenuOpen(false);
+            }}
+            className="w-full text-left py-2 text-blue-900 border-b border-slate-100 flex items-center gap-2 font-bold"
+          >
+            <BookOpen className="w-4 h-4 text-blue-700" /> PDF Notes &amp; Study Material
+          </button>
+          <button
+            onClick={() => {
               setActiveView('verify-cert');
               setMobileMenuOpen(false);
             }}
@@ -287,9 +343,15 @@ export const Navbar: React.FC<Props> = ({
               onOpenFranchise();
               setMobileMenuOpen(false);
             }}
-            className="w-full text-left py-2 text-slate-800 border-b border-slate-100"
+            className="w-full text-left py-2 text-blue-950 border-b border-slate-100 flex items-center justify-between font-bold"
           >
-            Franchise Application
+            <span className="flex items-center gap-2">
+              <Building2 className="w-4 h-4 text-blue-700" /> Franchise Center Affiliation
+            </span>
+            <span className="px-2 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-black">
+              <span className="line-through text-emerald-200 mr-1 font-normal">₹1,100</span>
+              <span className="text-yellow-300">FREE ₹0</span>
+            </span>
           </button>
 
           {!currentUser ? (

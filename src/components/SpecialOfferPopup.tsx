@@ -6,6 +6,7 @@ interface SpecialOfferPopupProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenAdmission: (courseId?: string) => void;
+  onOpenFranchise?: () => void;
   courses: Course[];
   settings: InstituteSettings;
 }
@@ -14,6 +15,7 @@ export const SpecialOfferPopup: React.FC<SpecialOfferPopupProps> = ({
   isOpen,
   onClose,
   onOpenAdmission,
+  onOpenFranchise,
   courses,
   settings,
 }) => {
@@ -190,6 +192,33 @@ export const SpecialOfferPopup: React.FC<SpecialOfferPopupProps> = ({
               <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
               <span>Instant QR Verification</span>
             </div>
+          </div>
+
+          {/* Highlighted Free Franchise Offer Ribbon */}
+          <div className="bg-gradient-to-r from-blue-900 to-[#0f2942] text-white p-3.5 rounded-xl border-2 border-amber-400 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-md">
+            <div className="space-y-0.5 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-1.5">
+                <span className="px-2 py-0.5 bg-red-600 text-white rounded text-[10px] font-black uppercase">
+                  FREE FRANCHISE OFFER
+                </span>
+                <span className="text-[11px] font-bold text-amber-300">
+                  Affiliation Fee: <span className="line-through text-red-300 font-normal">₹1,100/-</span> <span className="text-white font-black text-xs">₹0 (ZERO FEE)</span>
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-200">
+                Want to start a recognized Computer Institute center? Claim 100% free autonomous affiliation!
+              </p>
+            </div>
+
+            <button
+              onClick={() => {
+                onClose();
+                if (onOpenFranchise) onOpenFranchise();
+              }}
+              className="px-3.5 py-1.5 bg-amber-400 hover:bg-yellow-300 text-slate-950 font-black rounded-lg text-xs shadow-xs shrink-0 cursor-pointer"
+            >
+              Apply Free Franchise →
+            </button>
           </div>
         </div>
 

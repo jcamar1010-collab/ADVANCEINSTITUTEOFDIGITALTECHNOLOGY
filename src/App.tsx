@@ -14,6 +14,8 @@ import { FranchiseApplyModal } from './components/FranchiseApplyModal.tsx';
 import { LoginModal } from './components/LoginModal.tsx';
 import { OfferTickerBanner } from './components/OfferTickerBanner.tsx';
 import { SpecialOfferPopup } from './components/SpecialOfferPopup.tsx';
+import { MCQPracticePortal } from './components/MCQPracticePortal.tsx';
+import { PdfNotesPortal } from './components/PdfNotesPortal.tsx';
 
 export default function App() {
   const [settings, setSettings] = useState<InstituteSettings>({
@@ -145,6 +147,7 @@ export default function App() {
         settings={settings}
         onOpenOfferModal={() => setIsOfferPopupOpen(true)}
         onOpenAdmission={() => handleOpenAdmissionWithCourse()}
+        onOpenFranchise={() => setIsFranchiseOpen(true)}
       />
 
       {/* Institutional Top Navbar */}
@@ -174,6 +177,14 @@ export default function App() {
             onOpenFranchise={() => setIsFranchiseOpen(true)}
             onNavigateVerification={handleNavigateVerification}
             onOpenAdminNotices={() => setActiveView('admin')}
+            onOpenMCQ={() => {
+              setActiveView('mcq');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onOpenNotes={() => {
+              setActiveView('notes');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             isAdmin={currentUser?.role === 'admin'}
           />
         )}
@@ -189,6 +200,28 @@ export default function App() {
           <PublicVerifyMarksheet
             initialSearch={verificationQuery}
             settings={settings}
+          />
+        )}
+
+        {activeView === 'mcq' && (
+          <MCQPracticePortal
+            settings={settings}
+            onOpenAdmission={() => handleOpenAdmissionWithCourse()}
+            onOpenNotes={() => {
+              setActiveView('notes');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {activeView === 'notes' && (
+          <PdfNotesPortal
+            settings={settings}
+            onOpenAdmission={() => handleOpenAdmissionWithCourse()}
+            onOpenMCQ={() => {
+              setActiveView('mcq');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 

@@ -41,6 +41,13 @@ export interface InstituteSettings {
   offerTickerEnabled?: boolean;
   offerTickerText?: string;
   offerDurationHours?: number;
+  youtubeVideoUrl?: string;
+  youtubeSectionTitle?: string;
+  youtubeSectionDescription?: string;
+  youtubeSectionEnabled?: boolean;
+  upiQrCodeUrl?: string;
+  upiId?: string;
+  upiPayeeName?: string;
   notices?: NoticeItem[];
   gradingRules: {
     minPercent: number;
@@ -86,6 +93,7 @@ export interface Franchise {
   state: string;
   status: 'pending' | 'approved' | 'suspended';
   approvedDate?: string;
+  loginPassword?: string;
   createdAt: string;
 }
 
@@ -121,7 +129,21 @@ export interface Student {
   franchiseCode: string;
   admissionStatus: AdmissionStatus;
   academicStatus: AcademicStatus;
+  loginPassword?: string;
   createdAt: string;
+}
+
+export interface PasswordResetRequest {
+  id: string;
+  role: 'student' | 'franchise';
+  identifier: string;
+  registeredMobile: string;
+  name: string;
+  requestedAt: string;
+  status: 'PENDING' | 'RESOLVED' | 'REJECTED';
+  resolvedAt?: string;
+  newPassword?: string;
+  adminRemarks?: string;
 }
 
 export interface SubjectMarksEntry {
@@ -281,4 +303,49 @@ export interface AuditLog {
 export interface AuthSession {
   user: User;
   token: string;
+}
+
+export type MCQCategory = 'CCC' | 'O_LEVEL' | 'COMPETITIVE' | 'ADCA_DCA' | 'PROGRAMMING';
+
+export interface MCQQuestion {
+  id: string;
+  category: MCQCategory;
+  categoryName: string;
+  question: string;
+  options: string[]; // exactly 4 options
+  correctAnswerIndex: number; // 0, 1, 2, or 3
+  explanation?: string;
+  difficulty?: 'Basic' | 'Intermediate' | 'Advanced';
+  createdAt?: string;
+}
+
+export interface PdfNote {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  fileUrl: string;
+  fileSize?: string;
+  pages?: number;
+  price?: number;            // Under ₹100 offer price (e.g. 29, 49, 79)
+  originalPrice?: number;    // Strike-through original price (e.g. 149, 199, 299)
+  discountPercent?: number;  // 50% to 80% discount
+  uploadedAt: string;
+  uploadedBy?: string;
+  downloadsCount?: number;
+}
+
+export interface PdfDownloadRequest {
+  id: string;
+  pdfId: string;
+  pdfTitle: string;
+  studentName: string;
+  mobile: string;
+  amountPaid?: number;
+  utrNumber?: string;
+  paymentScreenshotUrl?: string;
+  status: 'PENDING' | 'APPROVED' | 'REJECTED';
+  requestedAt: string;
+  approvedAt?: string;
+  adminRemarks?: string;
 }
