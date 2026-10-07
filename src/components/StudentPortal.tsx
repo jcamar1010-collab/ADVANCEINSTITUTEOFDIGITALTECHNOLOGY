@@ -34,6 +34,9 @@ import {
   XCircle,
   KeyRound,
   X,
+  Trophy,
+  Target,
+  BarChart3,
 } from 'lucide-react';
 
 interface Props {
@@ -81,6 +84,30 @@ export const StudentPortal: React.FC<Props> = ({ settings, studentId = 'stu-01' 
   const [mcqAnswers, setMcqAnswers] = useState<Record<string, number>>({});
   const [showExplanation, setShowExplanation] = useState<Record<string, boolean>>({});
   const [mcqLoading, setMcqLoading] = useState(false);
+  const [mcqSubmitted, setMcqSubmitted] = useState(false);
+  const [mcqFilter, setMcqFilter] = useState<'ALL' | 'CORRECT' | 'WRONG' | 'UNATTEMPTED'>('ALL');
+
+  const getMcqStats = () => {
+    let correct = 0;
+    let wrong = 0;
+    mcqs.forEach((q) => {
+      const ans = mcqAnswers[q.id];
+      if (ans !== undefined) {
+        if (ans === q.correctAnswerIndex) {
+          correct += 1;
+        } else {
+          wrong += 1;
+        }
+      }
+    });
+    const total = mcqs.length;
+    const attempted = correct + wrong;
+    const unattempted = Math.max(0, total - attempted);
+    const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
+    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+    const isPass = percentage >= 50;
+    return { correct, wrong, unattempted, attempted, total, percentage, accuracy, isPass };
+  };
 
   useEffect(() => {
     async function load() {
@@ -486,18 +513,160 @@ export const StudentPortal: React.FC<Props> = ({ settings, studentId = 'stu-01' 
                 Test your conceptual knowledge with official exam-aligned multiple choice questions, timer mock tests, and instant explanations.
               </p>
             </div>
-            <button
-              onClick={() => {
-                setMcqAnswers({});
-                setShowExplanation({});
-                loadMCQs(mcqCategory);
-              }}
-              className="px-3.5 py-2 bg-white text-amber-900 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-amber-50 cursor-pointer shrink-0"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset Test</span>
-            </button>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => {
+                  setMcqAnswers({});
+                  setShowExplanation({});
+                  setMcqSubmitted(false);
+                  setMcqFilter('ALL');
+                  loadMCQs(mcqCategory);
+                }}
+                className="px-3.5 py-2 bg-white text-amber-900 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-amber-50 cursor-pointer"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Test</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMcqSubmitted(true);
+                  const el = document.getElementById('student-mcq-result-card');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black rounded-lg text-xs flex items-center gap-1.5 shadow-sm cursor-pointer"
+              >
+                <Trophy className="w-3.5 h-3.5" />
+                <span>Submit &amp; View Result</span>
+              </button>
+            </div>
           </div>
+
+          {/* Live Score Tracker & Result Summary Bar */}
+          {(() => {
+            const stats = getMcqStats();
+            return (
+              <div className="bg-gradient-to-r from-slate-900 via-[#0f2942] to-blue-950 text-white rounded-2xl p-5 shadow-lg border border-slate-800 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-700/60 pb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+                      <BarChart3 className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-sm sm:text-base text-white">
+                        Live Examination Result Tracker
+                      </h3>
+                      <p className="text-[11px] text-slate-300">
+                        Real-time evaluation of correct and incorrect answers • End of test scorecard
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMcqSubmitted(true);
+                        const el = document.getElementById('student-mcq-result-card');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="px-4 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-lg text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Trophy className="w-3.5 h-3.5 text-amber-300" />
+                      <span>{mcqSubmitted ? 'Result Displayed Below ↓' : 'Submit & View Result'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 4 Metric Boxes: Total, Correct, Incorrect, Unattempted */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                  <div className="p-3 bg-white/5 border border-white/10 rounded-xl">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold block tracking-wider">Total Questions</span>
+                    <div className="text-xl sm:text-2xl font-black text-white mt-0.5">{stats.total}</div>
+                    <span className="text-[10px] text-slate-400">Attempted: {stats.attempted}</span>
+                  </div>
+
+                  <div className="p-3 bg-emerald-500/15 border border-emerald-400/40 rounded-xl">
+                    <span className="text-[10px] text-emerald-300 uppercase font-bold block tracking-wider flex items-center justify-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <span>Correct Answers</span>
+                    </span>
+                    <div className="text-xl sm:text-2xl font-black text-emerald-300 mt-0.5">{stats.correct}</div>
+                    <span className="text-[10px] text-emerald-200/80">{stats.percentage}% score</span>
+                  </div>
+
+                  <div className="p-3 bg-red-500/15 border border-red-400/40 rounded-xl">
+                    <span className="text-[10px] text-red-300 uppercase font-bold block tracking-wider flex items-center justify-center gap-1">
+                      <XCircle className="w-3 h-3 text-red-400" />
+                      <span>Incorrect Answers</span>
+                    </span>
+                    <div className="text-xl sm:text-2xl font-black text-red-300 mt-0.5">{stats.wrong}</div>
+                    <span className="text-[10px] text-red-200/80">Needs review</span>
+                  </div>
+
+                  <div className="p-3 bg-amber-500/15 border border-amber-400/40 rounded-xl">
+                    <span className="text-[10px] text-amber-300 uppercase font-bold block tracking-wider flex items-center justify-center gap-1">
+                      <Clock className="w-3 h-3 text-amber-400" />
+                      <span>Skipped Questions</span>
+                    </span>
+                    <div className="text-xl sm:text-2xl font-black text-amber-300 mt-0.5">{stats.unattempted}</div>
+                    <span className="text-[10px] text-amber-200/80">Accuracy: {stats.accuracy}%</span>
+                  </div>
+                </div>
+
+                {/* Question Filter Tabs */}
+                <div className="pt-2 border-t border-slate-700/60 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <span className="text-[11px] text-slate-300 font-semibold">Filter Question View:</span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => setMcqFilter('ALL')}
+                      className={`px-2.5 py-1 rounded-lg font-bold text-[11px] transition-all cursor-pointer ${
+                        mcqFilter === 'ALL'
+                          ? 'bg-white text-slate-900 shadow-sm'
+                          : 'bg-white/10 text-slate-300 hover:bg-white/20'
+                      }`}
+                    >
+                      All ({stats.total})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setMcqFilter('CORRECT')}
+                      className={`px-2.5 py-1 rounded-lg font-bold text-[11px] transition-all cursor-pointer ${
+                        mcqFilter === 'CORRECT'
+                          ? 'bg-emerald-500 text-white shadow-sm'
+                          : 'bg-emerald-950/60 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-900/60'
+                      }`}
+                    >
+                      ✓ Correct ({stats.correct})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setMcqFilter('WRONG')}
+                      className={`px-2.5 py-1 rounded-lg font-bold text-[11px] transition-all cursor-pointer ${
+                        mcqFilter === 'WRONG'
+                          ? 'bg-red-500 text-white shadow-sm'
+                          : 'bg-red-950/60 text-red-300 border border-red-500/30 hover:bg-red-900/60'
+                      }`}
+                    >
+                      ✗ Incorrect ({stats.wrong})
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setMcqFilter('UNATTEMPTED')}
+                      className={`px-2.5 py-1 rounded-lg font-bold text-[11px] transition-all cursor-pointer ${
+                        mcqFilter === 'UNATTEMPTED'
+                          ? 'bg-amber-500 text-slate-950 shadow-sm'
+                          : 'bg-amber-950/60 text-amber-300 border border-amber-500/30 hover:bg-amber-900/60'
+                      }`}
+                    >
+                      ⊘ Unattempted ({stats.unattempted})
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Category Filter */}
           <div className="flex flex-wrap items-center gap-2">
@@ -534,85 +703,251 @@ export const StudentPortal: React.FC<Props> = ({ settings, studentId = 'stu-01' 
             </div>
           ) : (
             <div className="space-y-4">
-              {mcqs.map((q, qIdx) => {
-                const selectedOpt = mcqAnswers[q.id];
-                const isAnswered = selectedOpt !== undefined;
-                const isCorrect = isAnswered && selectedOpt === q.correctAnswerIndex;
+              {mcqs
+                .filter((q) => {
+                  if (mcqFilter === 'ALL') return true;
+                  const ans = mcqAnswers[q.id];
+                  if (mcqFilter === 'CORRECT') return ans !== undefined && ans === q.correctAnswerIndex;
+                  if (mcqFilter === 'WRONG') return ans !== undefined && ans !== q.correctAnswerIndex;
+                  if (mcqFilter === 'UNATTEMPTED') return ans === undefined;
+                  return true;
+                })
+                .map((q, qIdx) => {
+                  const selectedOpt = mcqAnswers[q.id];
+                  const isAnswered = selectedOpt !== undefined;
+                  const isCorrect = isAnswered && selectedOpt === q.correctAnswerIndex;
 
+                  return (
+                    <div
+                      key={q.id}
+                      className={`bg-white rounded-xl border p-5 transition-all shadow-xs ${
+                        isAnswered
+                          ? isCorrect
+                            ? 'border-emerald-300 ring-1 ring-emerald-200'
+                            : 'border-red-300 ring-1 ring-red-200'
+                          : 'border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className="px-2 py-0.5 bg-amber-100 text-amber-900 rounded font-bold text-[10px] uppercase tracking-wide">
+                          {q.categoryName || q.category}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] font-mono text-slate-400">
+                            Question #{qIdx + 1}
+                          </span>
+                          {isAnswered && (
+                            <span
+                              className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                                isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
+                              }`}
+                            >
+                              {isCorrect ? '✓ Correct' : '✗ Incorrect'}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <h3 className="font-bold text-slate-900 text-sm mb-4 leading-relaxed">
+                        {q.question}
+                      </h3>
+
+                      {/* Options Grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                        {q.options.map((opt, optIdx) => {
+                          let btnStyle = 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700';
+
+                          if (isAnswered) {
+                            if (optIdx === q.correctAnswerIndex) {
+                              btnStyle = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold ring-2 ring-emerald-400/40';
+                            } else if (optIdx === selectedOpt && !isCorrect) {
+                              btnStyle = 'border-red-500 bg-red-50 text-red-950 font-bold ring-2 ring-red-400/40';
+                            } else {
+                              btnStyle = 'border-slate-200 bg-slate-50 opacity-60 text-slate-500';
+                            }
+                          }
+
+                          return (
+                            <button
+                              key={optIdx}
+                              disabled={isAnswered}
+                              onClick={() => {
+                                setMcqAnswers((prev) => ({ ...prev, [q.id]: optIdx }));
+                                setShowExplanation((prev) => ({ ...prev, [q.id]: true }));
+                              }}
+                              className={`flex items-center gap-3 p-3 rounded-lg border text-left text-xs transition-all cursor-pointer ${btnStyle}`}
+                            >
+                              <span className="w-6 h-6 rounded-full bg-white border border-slate-300 flex items-center justify-center font-bold text-[11px] shrink-0">
+                                {String.fromCharCode(65 + optIdx)}
+                              </span>
+                              <span className="flex-1">{opt}</span>
+                              {isAnswered && optIdx === q.correctAnswerIndex && (
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                              )}
+                              {isAnswered && optIdx === selectedOpt && !isCorrect && (
+                                <XCircle className="w-4 h-4 text-red-600 shrink-0" />
+                              )}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Explanation */}
+                      {isAnswered && q.explanation && (
+                        <div className="mt-3 p-3 rounded-lg bg-blue-50/70 border border-blue-200 text-xs text-blue-950">
+                          <strong className="text-blue-900 block mb-0.5">Explanation &amp; Reference:</strong>
+                          {q.explanation}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+
+              {/* End-of-Test Action Submission Banner */}
+              <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4">
+                <div>
+                  <h4 className="font-bold text-amber-950 text-sm">Completed your test questions?</h4>
+                  <p className="text-xs text-amber-800">
+                    Review your final exam score, correct and incorrect answers summary below.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMcqSubmitted(true);
+                    const el = document.getElementById('student-mcq-result-card');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="px-5 py-2.5 bg-[#0f2942] hover:bg-[#1a3d60] text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-md cursor-pointer shrink-0"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span>Submit Test &amp; View Final Scorecard</span>
+                </button>
+              </div>
+
+              {/* ------------------------------------------------------------- */}
+              {/* END OF TEST FINAL RESULT SCORECARD */}
+              {/* ------------------------------------------------------------- */}
+              {(() => {
+                const stats = getMcqStats();
+                if (stats.attempted === 0 && !mcqSubmitted) return null;
                 return (
                   <div
-                    key={q.id}
-                    className={`bg-white rounded-xl border p-5 transition-all shadow-xs ${
-                      isAnswered
-                        ? isCorrect
-                          ? 'border-emerald-300 ring-1 ring-emerald-200'
-                          : 'border-red-300 ring-1 ring-red-200'
-                        : 'border-slate-200'
-                    }`}
+                    id="student-mcq-result-card"
+                    className="bg-white rounded-2xl border-2 border-slate-300 p-6 sm:p-8 text-center space-y-6 shadow-xl mt-6 animate-in fade-in"
                   >
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="px-2 py-0.5 bg-amber-100 text-amber-900 rounded font-bold text-[10px] uppercase tracking-wide">
-                        {q.categoryName || q.category}
-                      </span>
-                      <span className="text-[11px] font-mono text-slate-400">
-                        Question #{qIdx + 1}
-                      </span>
+                    <div
+                      className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto ${
+                        stats.isPass ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'
+                      }`}
+                    >
+                      <Trophy className="w-8 h-8" />
                     </div>
 
-                    <h3 className="font-bold text-slate-900 text-sm mb-4 leading-relaxed">
-                      {q.question}
-                    </h3>
-
-                    {/* Options Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
-                      {q.options.map((opt, optIdx) => {
-                        let btnStyle = 'border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700';
-
-                        if (isAnswered) {
-                          if (optIdx === q.correctAnswerIndex) {
-                            btnStyle = 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold';
-                          } else if (optIdx === selectedOpt && !isCorrect) {
-                            btnStyle = 'border-red-500 bg-red-50 text-red-950 font-bold';
-                          } else {
-                            btnStyle = 'border-slate-200 bg-slate-50 opacity-60 text-slate-500';
-                          }
-                        }
-
-                        return (
-                          <button
-                            key={optIdx}
-                            disabled={isAnswered}
-                            onClick={() => {
-                              setMcqAnswers((prev) => ({ ...prev, [q.id]: optIdx }));
-                              setShowExplanation((prev) => ({ ...prev, [q.id]: true }));
-                            }}
-                            className={`flex items-center gap-3 p-3 rounded-lg border text-left text-xs transition-all cursor-pointer ${btnStyle}`}
-                          >
-                            <span className="w-6 h-6 rounded-full bg-white border border-slate-300 flex items-center justify-center font-bold text-[11px] shrink-0">
-                              {String.fromCharCode(65 + optIdx)}
-                            </span>
-                            <span className="flex-1">{opt}</span>
-                            {isAnswered && optIdx === q.correctAnswerIndex && (
-                              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                            )}
-                            {isAnswered && optIdx === selectedOpt && !isCorrect && (
-                              <XCircle className="w-4 h-4 text-red-600 shrink-0" />
-                            )}
-                          </button>
-                        );
-                      })}
+                    <div>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 block">
+                        Advance Institute of Digital Technology • Student Examination Board
+                      </span>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-1">
+                        MCQ Examination Final Result &amp; Scorecard
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+                        Final Scorecard Summary: <strong className="text-emerald-700">{stats.correct} Correct</strong> • <strong className="text-red-700">{stats.wrong} Incorrect</strong>
+                      </p>
                     </div>
 
-                    {/* Explanation */}
-                    {isAnswered && q.explanation && (
-                      <div className="mt-3 p-3 rounded-lg bg-blue-50/70 border border-blue-200 text-xs text-blue-950">
-                        <strong className="text-blue-900 block mb-0.5">Explanation &amp; Reference:</strong>
-                        {q.explanation}
+                    {/* 4 Big Result Cards */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
+                      <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl">
+                        <span className="text-[10px] text-slate-500 uppercase font-bold block">Total Questions</span>
+                        <div className="text-2xl sm:text-3xl font-black text-slate-900 mt-0.5">{stats.total}</div>
+                        <span className="text-[10px] text-slate-400">Attempted: {stats.attempted}</span>
                       </div>
-                    )}
+
+                      <div className="p-4 bg-emerald-50 border-2 border-emerald-400 rounded-2xl shadow-xs">
+                        <span className="text-[10px] text-emerald-800 uppercase font-bold block flex items-center justify-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>Correct Answers</span>
+                        </span>
+                        <div className="text-2xl sm:text-3xl font-black text-emerald-700 mt-0.5">{stats.correct}</div>
+                        <span className="text-[10px] text-emerald-800 font-semibold">{stats.percentage}% Score</span>
+                      </div>
+
+                      <div className="p-4 bg-red-50 border-2 border-red-400 rounded-2xl shadow-xs">
+                        <span className="text-[10px] text-red-800 uppercase font-bold block flex items-center justify-center gap-1">
+                          <XCircle className="w-3.5 h-3.5 text-red-600" />
+                          <span>Incorrect Answers</span>
+                        </span>
+                        <div className="text-2xl sm:text-3xl font-black text-red-700 mt-0.5">{stats.wrong}</div>
+                        <span className="text-[10px] text-red-800 font-semibold">Needs Review</span>
+                      </div>
+
+                      <div className="p-4 bg-amber-50 border-2 border-amber-300 rounded-2xl shadow-xs">
+                        <span className="text-[10px] text-amber-800 uppercase font-bold block flex items-center justify-center gap-1">
+                          <Clock className="w-3.5 h-3.5 text-amber-600" />
+                          <span>Skipped Questions</span>
+                        </span>
+                        <div className="text-2xl sm:text-3xl font-black text-amber-800 mt-0.5">{stats.unattempted}</div>
+                        <span className="text-[10px] text-amber-900 font-semibold">Accuracy: {stats.accuracy}%</span>
+                      </div>
+                    </div>
+
+                    {/* Evaluation Badge */}
+                    <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl max-w-xl mx-auto flex items-center justify-between text-xs font-semibold">
+                      <span>Final Evaluation Status:</span>
+                      <span
+                        className={`px-3 py-1 rounded-full font-bold ${
+                          stats.isPass ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
+                        }`}
+                      >
+                        {stats.isPass ? '✓ PASSED • READY FOR EXAMINATION' : '✗ NEEDS REVISION • REVIEW MISTAKES'}
+                      </span>
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                      {stats.wrong > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setMcqFilter('WRONG');
+                            window.scrollTo({ top: 300, behavior: 'smooth' });
+                          }}
+                          className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-sm cursor-pointer"
+                        >
+                          <XCircle className="w-4 h-4" />
+                          <span>Review Mistakes ({stats.wrong} Incorrect Questions)</span>
+                        </button>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setMcqAnswers({});
+                          setShowExplanation({});
+                          setMcqFilter('ALL');
+                          setMcqSubmitted(false);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="px-5 py-2.5 bg-[#0f2942] hover:bg-[#1a3d60] text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-sm cursor-pointer"
+                      >
+                        <RotateCcw className="w-4 h-4" />
+                        <span>Retake Examination</span>
+                      </button>
+
+                      {mcqFilter !== 'ALL' && (
+                        <button
+                          type="button"
+                          onClick={() => setMcqFilter('ALL')}
+                          className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl text-xs flex items-center gap-2 shadow-sm cursor-pointer"
+                        >
+                          <span>Show All Questions ({stats.total})</span>
+                        </button>
+                      )}
+                    </div>
                   </div>
                 );
-              })}
+              })()}
             </div>
           )}
         </div>
